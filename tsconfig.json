@@ -3,6 +3,7 @@
     "strict": true,
     "jsx": "react",
     "target": "es2015",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "experimentalDecorators": true
   }
 }

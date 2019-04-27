@@ -13,6 +13,8 @@ import {
 import { fade } from "@material-ui/core/styles/colorManipulator"
 import MenuIcon from "@material-ui/icons/Menu"
 import SearchIcon from "@material-ui/icons/Search"
+import { observable } from "mobx"
+import { observer } from "mobx-react-lite"
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -75,59 +77,74 @@ const styles = (theme: Theme) =>
     },
   })
 
+class SearchState {
+  @observable value = ""
+}
+
+export const searchStore = new SearchState()
+
 interface HeaderProps extends WithStyles<typeof styles> {
   siteTitle?: string
 }
 
-const Header: React.FunctionComponent<HeaderProps> = ({
-  siteTitle = ``,
-  classes,
-  children,
-}) => (
-  <div className={classes.root}>
-    <AppBar position="static">
-      <Toolbar>
-        <IconButton
-          className={classes.menuButton}
-          color="inherit"
-          aria-label="Open drawer"
+const Header: React.FunctionComponent<HeaderProps> = observer(
+  ({ siteTitle = ``, classes, children }) => {
+    const handleChange = React.useCallback(
+      (event: React.ChangeEvent<HTMLInputElement>) => {
+        searchStore.value = event.currentTarget.value
+      },
+      [searchStore]
+    )
+
+    return (
+      <div className={classes.root}>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="Open drawer"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              className={classes.title}
+              variant="h6"
+              color="inherit"
+              noWrap
+            >
+              {siteTitle}
+            </Typography>
+            <div className={classes.grow} />
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                value={searchStore.value}
+                onChange={handleChange}
+              />
+            </div>
+          </Toolbar>
+        </AppBar>
+        <div
+          style={{
+            margin: "0 auto",
+            maxWidth: 960,
+            padding: "0px 1.0875rem 1.45rem",
+            paddingTop: 0,
+          }}
         >
-          <MenuIcon />
-        </IconButton>
-        <Typography
-          className={classes.title}
-          variant="h6"
-          color="inherit"
-          noWrap
-        >
-          {siteTitle}
-        </Typography>
-        <div className={classes.grow} />
-        <div className={classes.search}>
-          <div className={classes.searchIcon}>
-            <SearchIcon />
-          </div>
-          <InputBase
-            placeholder="Search…"
-            classes={{
-              root: classes.inputRoot,
-              input: classes.inputInput,
-            }}
-          />
+          {children}
         </div>
-      </Toolbar>
-    </AppBar>
-    <div
-      style={{
-        margin: "0 auto",
-        maxWidth: 960,
-        padding: "0px 1.0875rem 1.45rem",
-        paddingTop: 0,
-      }}
-    >
-      {children}
-    </div>
-  </div>
+      </div>
+    )
+  }
 )
 
 export default withStyles(styles)(Header)

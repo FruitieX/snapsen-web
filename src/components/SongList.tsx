@@ -10,6 +10,7 @@ interface SongListProps {
   songs: Song[]
   bookId: string
   bookTitle: string
+  filter: string
 }
 
 const songListItemHeight = 60 // react-window wants this upfront, measured through browser dev tools
@@ -19,6 +20,7 @@ const SongList: React.FunctionComponent<SongListProps> = ({
   songs,
   bookId,
   bookTitle,
+  filter,
 }) => {
   const [height, setHeight] = React.useState(
     // don't break server-side rendering
@@ -50,6 +52,10 @@ const SongList: React.FunctionComponent<SongListProps> = ({
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
+  const filterRegex = new RegExp(filter, "i")
+
+  const filteredSongs = songs.filter(song => filterRegex.test(song.title))
+
   // Beware of hacks below, to get WindowScroller working with react-window:
   // https://github.com/bvaughn/react-window/issues/30#issuecomment-428868071
   return (
@@ -60,7 +66,7 @@ const SongList: React.FunctionComponent<SongListProps> = ({
           height={height}
           width="100%"
           ref={listRef}
-          itemCount={songs.length}
+          itemCount={filteredSongs.length}
           itemSize={songListItemHeight}
           overscanCount={10}
           style={{ height: "100%" }}
@@ -68,7 +74,7 @@ const SongList: React.FunctionComponent<SongListProps> = ({
           {React.memo(
             ({ style, index }) => (
               <SongListItem
-                song={songs[index]}
+                song={filteredSongs[index]}
                 bookId={bookId}
                 bookTitle={bookTitle}
                 style={style}

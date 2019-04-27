@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@babel/plugin-proposal-decorators": "^7.4.4",
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
     "@types/react-helmet": "^5.0.8",
@@ -19,6 +20,8 @@
     "gatsby-source-filesystem": "^2.0.32",
     "gatsby-transformer-json": "^2.1.11",
     "gatsby-transformer-sharp": "^2.1.18",
+    "mobx": "^5.9.4",
+    "mobx-react-lite": "^1.2.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",
