@@ -13,7 +13,6 @@ import {
 import { fade } from "@material-ui/core/styles/colorManipulator"
 import MenuIcon from "@material-ui/icons/Menu"
 import SearchIcon from "@material-ui/icons/Search"
-import Helmet from "react-helmet"
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -86,13 +85,6 @@ const Header: React.FunctionComponent<HeaderProps> = ({
   children,
 }) => (
   <div className={classes.root}>
-    <Helmet
-      title="Gatsby Default Starter"
-      meta={[
-        { name: "description", content: "Sample" },
-        { name: "keywords", content: "sample, something" },
-      ]}
-    />
     <AppBar position="static">
       <Toolbar>
         <IconButton

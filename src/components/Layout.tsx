@@ -15,6 +15,7 @@ import {
   CssBaseline,
 } from "@material-ui/core"
 import { brown } from "@material-ui/core/colors"
+import Helmet from "react-helmet"
 
 const theme = createMuiTheme({
   palette: {
@@ -36,6 +37,13 @@ const Layout: React.FunctionComponent = ({ children }) => (
     render={data => (
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
+        <Helmet
+          title="Snapsen"
+          meta={[
+            { name: "description", content: "A digital songbook web-app" },
+            { name: "keywords", content: "songbook, snapsen" },
+          ]}
+        />
         <Header siteTitle={data.site.siteMetadata.title} />
         <div
           style={{

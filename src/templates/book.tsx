@@ -40,13 +40,8 @@ export const pageQuery = graphql`
       songs {
         title
         id
-        description
         page
-        pre
-        lyrics
-        melody
         type
-        musicalKey
       }
     }
   }

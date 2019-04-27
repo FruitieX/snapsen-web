@@ -35,16 +35,6 @@ export const pageQuery = graphql`
     booksJson(id: { eq: $bookId }) {
       title
       id
-      description
-      primaryColor
-      versions {
-        book
-      }
-      author {
-        name
-        email
-      }
-      image
       songs {
         title
         id
