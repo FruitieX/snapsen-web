@@ -1,10 +1,18 @@
 import * as React from "react"
-import { List, Card, ListSubheader } from "@material-ui/core"
+import {
+  List,
+  Card,
+  ListSubheader,
+  Typography,
+  CardContent,
+  Button,
+} from "@material-ui/core"
 import { Song } from "../types/song"
 import SongListItem from "./SongListItem"
 
 import { FixedSizeList, areEqual } from "react-window"
 import { WindowScroller } from "react-virtualized"
+import { searchStore } from "./Header"
 
 interface SongListProps {
   songs: Song[]
@@ -52,6 +60,10 @@ const SongList: React.FunctionComponent<SongListProps> = ({
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
+  const handleClearFilter = React.useCallback(() => (searchStore.value = ""), [
+    searchStore,
+  ])
+
   const filterRegex = new RegExp(filter, "i")
 
   const filteredSongs = songs.filter(song => filterRegex.test(song.title))
@@ -60,6 +72,20 @@ const SongList: React.FunctionComponent<SongListProps> = ({
   // https://github.com/bvaughn/react-window/issues/30#issuecomment-428868071
   return (
     <Card>
+      {filter !== "" && (
+        <CardContent>
+          <Typography variant="h5">
+            Note: showing only results matching filter.
+          </Typography>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleClearFilter}
+          >
+            Clear filter
+          </Button>
+        </CardContent>
+      )}
       <List subheader={<ListSubheader>Songs</ListSubheader>} component="nav">
         <WindowScroller onScroll={handleScroll}>{() => <div />}</WindowScroller>
         <FixedSizeList
