@@ -1,10 +1,10 @@
 import * as React from "react"
 import { Link } from "gatsby"
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
-import Books from "../components/books"
+import Layout from "../components/Layout"
+import Image from "../components/Image"
+import SEO from "../components/SEO"
+import Books from "../components/Books"
 
 const IndexPage = () => (
   <Layout>

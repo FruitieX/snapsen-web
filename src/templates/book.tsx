@@ -1,7 +1,7 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import { Book } from "../types/book"
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 
 interface BookProps {
   data: {
