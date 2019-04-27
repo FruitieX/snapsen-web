@@ -21,9 +21,14 @@
     "gatsby-transformer-sharp": "^2.1.18",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-helmet": "^5.2.0"
+    "react-helmet": "^5.2.0",
+    "react-virtualized": "^9.21.0",
+    "react-window": "^1.8.1"
   },
   "devDependencies": {
+    "@types/react-virtualized": "^9.21.1",
+    "@types/react-virtualized-auto-sizer": "^1.0.0",
+    "@types/react-window": "^1.8.0",
     "husky": "^2.1.0",
     "lint-staged": ">=8",
     "prettier": "^1.17.0"
