@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "strict": true,
-    "jsx": "react"
+    "jsx": "react",
+    "target": "es2015",
+    "moduleResolution": "node"
   }
 }

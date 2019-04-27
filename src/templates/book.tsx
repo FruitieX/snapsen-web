@@ -4,13 +4,13 @@ import { Book } from "../types/book"
 import Layout from "../components/Layout"
 import BookDetails from "../components/BookDetails"
 
-interface BookProps {
+interface BookTemplateProps {
   data: {
     booksJson: Book
   }
 }
 
-const BookTemplate: React.FunctionComponent<BookProps> = props => {
+const BookTemplate: React.FunctionComponent<BookTemplateProps> = props => {
   const book = props.data.booksJson
 
   return (

@@ -2,18 +2,32 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import { Book } from "../types/book"
 import Layout from "../components/Layout"
+import SongDetails from "../components/SongDetails"
+import NotFoundPage from "../pages/404"
 
-interface BookProps {
+interface SongTemplateProps {
   data: {
     booksJson: Book
   }
+
+  pageContext: {
+    songId: string
+  }
 }
 
-const SongTemplate: React.FunctionComponent<BookProps> = props => (
-  <Layout>
-    <div>{JSON.stringify(props.data)}</div>
-  </Layout>
-)
+const SongTemplate: React.FunctionComponent<SongTemplateProps> = props => {
+  const book = props.data.booksJson
+  const song = book.songs.find(song => song.id === props.pageContext.songId)
+  console.log(props)
+
+  return song ? (
+    <Layout>
+      <SongDetails bookId={book.id} bookTitle={book.title} {...song} />
+    </Layout>
+  ) : (
+    <NotFoundPage />
+  )
+}
 
 export default SongTemplate
 

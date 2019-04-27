@@ -35,28 +35,26 @@ const BookDetails: React.FunctionComponent<BookItemProps> = ({
   id,
   songs,
   classes,
-}) => {
-  return (
-    <>
-      <Card className={classes.bookCard}>
-        <ButtonLink
-          color="primary"
-          size="large"
-          className={classes.backButton}
-          to={`/`}
-        >
-          <BackIcon className={classes.leftIcon} />
-          Back
-        </ButtonLink>
-        <CardHeader
-          avatar={<Avatar aria-label="Songbook info" src={image} />}
-          title={title}
-          subheader={description}
-        />
-      </Card>
-      <SongList songs={songs} bookId={id} />
-    </>
-  )
-}
+}) => (
+  <>
+    <Card className={classes.bookCard}>
+      <ButtonLink
+        color="primary"
+        size="large"
+        className={classes.backButton}
+        to={`/`}
+      >
+        <BackIcon className={classes.leftIcon} />
+        Back
+      </ButtonLink>
+      <CardHeader
+        avatar={<Avatar aria-label="Songbook info" src={image} />}
+        title={title}
+        subheader={description}
+      />
+    </Card>
+    <SongList songs={songs} bookId={id} />
+  </>
+)
 
 export default withStyles(styles)(BookDetails)
