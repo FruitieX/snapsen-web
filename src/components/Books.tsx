@@ -22,6 +22,7 @@ const Books: React.FunctionComponent = () => (
               id
               title
               description
+              image
               songs {
                 id
               }
@@ -44,6 +45,7 @@ const Books: React.FunctionComponent = () => (
                 key={book.id}
                 title={book.title}
                 description={book.description}
+                image={book.image}
                 id={book.id}
               />
             ))}

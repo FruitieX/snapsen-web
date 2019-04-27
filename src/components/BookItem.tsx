@@ -7,6 +7,8 @@ import {
   Divider,
   Card,
   ListSubheader,
+  ListItemAvatar,
+  Avatar,
 } from "@material-ui/core"
 import GatsbyLink, { GatsbyLinkProps } from "gatsby-link"
 import { ListItemProps } from "@material-ui/core/ListItem"
@@ -14,6 +16,7 @@ import { ListItemProps } from "@material-ui/core/ListItem"
 interface BookItemProps {
   title: string
   description: string
+  image: string
   id: string
 }
 
@@ -25,9 +28,13 @@ const ListItemLink = <T extends {}>(
 const BookItem: React.FunctionComponent<BookItemProps> = ({
   title,
   description,
+  image,
   id,
 }) => (
   <ListItemLink button to={`/${id}`}>
+    <ListItemAvatar>
+      <Avatar src={image} />
+    </ListItemAvatar>
     <ListItemText primary={title} secondary={description} />
   </ListItemLink>
 )
