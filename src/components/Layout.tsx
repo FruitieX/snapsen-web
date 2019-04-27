@@ -17,6 +17,8 @@ import {
 import { brown } from "@material-ui/core/colors"
 import Helmet from "react-helmet"
 
+import "typeface-roboto"
+
 const theme = createMuiTheme({
   palette: {
     primary: brown,
