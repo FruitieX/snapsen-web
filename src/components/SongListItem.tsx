@@ -3,6 +3,7 @@ import { ListItemText } from "@material-ui/core"
 import { ListItemLink } from "./GatsbyLinkWrappers"
 import { Song } from "../types/song"
 import generateSongDescription from "../utils/generateSongDescription"
+import { areEqual } from "react-window"
 
 interface SongListItemProps {
   bookId: string
@@ -23,7 +24,8 @@ const SongListItem: React.FunctionComponent<SongListItemProps> = React.memo(
         />
       </ListItemLink>
     )
-  }
+  },
+  areEqual
 )
 
 export default SongListItem
