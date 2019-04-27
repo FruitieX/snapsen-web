@@ -772,7 +772,7 @@
       "page": 74,
       "lyrics": "Vem sade ordet SKÅL här vid bordet\nviskande for det sällskapet kring.\nFattom kristallen, nubben är kall den\nstiger åt skallen, kling klingeling!\nKäraste vänner, välkomna hit!\nHoppas ni har en “bon appetit”.\nNu lilla nubben, tages på stubben\nSKÅL lilla nubben, kling klingeling.",
       "type": ["Snapsvisa"],
-      "id": "vem-sade-ordet-skål?",
+      "id": "vem-sade-ordet-skål",
       "melody": "Vårvindar friska",
       "description": "musik: svensk folkvisa"
     },
@@ -1000,7 +1000,7 @@
       "page": 89,
       "lyrics": "Minne?\nMuisti hävis’, mutt’ minne?\njuhlista selvisimme\n- muistikatkoja on.\n\nMinne?\nLähtisin vaikka minne,\nkunhan selvittäisimme\nmitä tapahtunut on.\nMutta tiedän mä keinon\nmikä auttaapi tuo:\nOta ryyppy, ja muistis’ juo!",
       "type": ["Snapsvisa"],
-      "id": "vart?",
+      "id": "vart",
       "melody": "Memory ur musikalen Cats",
       "description": "text: Leif Hernberg\nmusik: Andrew Lloyd Webber"
     },
