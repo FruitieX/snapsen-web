@@ -1,7 +1,7 @@
 import * as React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import { Book } from "../types/book"
-import BookItem from "./BookItem"
+import BookListItem from "./BookListItem"
 import { Card, List, ListSubheader } from "@material-ui/core"
 
 interface BooksQuery {
@@ -12,7 +12,7 @@ interface BooksQuery {
   }
 }
 
-const Books: React.FunctionComponent = () => (
+const BookList: React.FunctionComponent = () => (
   <StaticQuery
     query={graphql`
       query BooksQuery {
@@ -41,7 +41,7 @@ const Books: React.FunctionComponent = () => (
             component="nav"
           >
             {books.map(({ node: book }) => (
-              <BookItem
+              <BookListItem
                 key={book.id}
                 title={book.title}
                 description={book.description}
@@ -56,4 +56,4 @@ const Books: React.FunctionComponent = () => (
   />
 )
 
-export default Books
+export default BookList

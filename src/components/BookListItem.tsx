@@ -1,17 +1,5 @@
 import * as React from "react"
-import {
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Divider,
-  Card,
-  ListSubheader,
-  ListItemAvatar,
-  Avatar,
-} from "@material-ui/core"
-import GatsbyLink, { GatsbyLinkProps } from "gatsby-link"
-import { ListItemProps } from "@material-ui/core/ListItem"
+import { ListItemText, ListItemAvatar, Avatar } from "@material-ui/core"
 import { ListItemLink } from "./GatsbyLinkWrappers"
 
 interface BookItemProps {
@@ -21,7 +9,7 @@ interface BookItemProps {
   id: string
 }
 
-const BookItem: React.FunctionComponent<BookItemProps> = ({
+const BookListItem: React.FunctionComponent<BookItemProps> = ({
   title,
   description,
   image,
@@ -35,4 +23,4 @@ const BookItem: React.FunctionComponent<BookItemProps> = ({
   </ListItemLink>
 )
 
-export default BookItem
+export default BookListItem
