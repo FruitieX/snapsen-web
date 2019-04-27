@@ -22,6 +22,7 @@ import TypeIcon from "@material-ui/icons/FilterList"
 import DescriptionIcon from "@material-ui/icons/Notes"
 import { ButtonLink } from "./GatsbyLinkWrappers"
 import { Song } from "../types/song"
+import generateSongDescription from "../utils/generateSongDescription"
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -67,15 +68,22 @@ const SongDetails: React.FunctionComponent<SongDetailsProps> = ({
       </ButtonLink>
       <CardHeader
         title={title}
-        subheader={`${type}, ${bookTitle} (p. ${page})`}
+        subheader={generateSongDescription(type, bookTitle, page)}
       />
       <CardContent>
         {pre && (
-          <Typography paragraph color="textSecondary">
-            {pre}
-          </Typography>
+          <Typography
+            component="pre"
+            paragraph
+            color="textSecondary"
+            dangerouslySetInnerHTML={{ __html: pre }}
+          />
         )}
-        <Typography paragraph>{lyrics}</Typography>
+        <Typography
+          component="pre"
+          paragraph
+          dangerouslySetInnerHTML={{ __html: lyrics }}
+        />
       </CardContent>
     </Card>
     <Card>

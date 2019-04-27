@@ -53,7 +53,7 @@ const BookDetails: React.FunctionComponent<BookItemProps> = ({
         subheader={description}
       />
     </Card>
-    <SongList songs={songs} bookId={id} />
+    <SongList songs={songs} bookId={id} bookTitle={title} />
   </>
 )
 

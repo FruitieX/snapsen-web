@@ -6,22 +6,18 @@ import SongListItem from "./SongListItem"
 interface SongListProps {
   songs: Song[]
   bookId: string
+  bookTitle: string
 }
 
 const SongList: React.FunctionComponent<SongListProps> = ({
   songs,
   bookId,
+  bookTitle,
 }) => (
   <Card>
     <List subheader={<ListSubheader>Songs</ListSubheader>} component="nav">
       {songs.map(song => (
-        <SongListItem
-          key={song.id}
-          title={song.title}
-          description={song.description}
-          id={song.id}
-          bookId={bookId}
-        />
+        <SongListItem bookId={bookId} bookTitle={bookTitle} {...song} />
       ))}
     </List>
   </Card>
