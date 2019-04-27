@@ -45,7 +45,7 @@ exports.createPages = ({ graphql, actions }) => {
 
       book.songs.forEach((song, songIndex) => {
         createPage({
-          path: `/${book.id}/${songIndex}`,
+          path: `/${book.id}/${song.id}`,
           component: songTemplate,
           context: {
             songId: song.id,

@@ -17,22 +17,19 @@ import { ListItemLink } from "./GatsbyLinkWrappers"
 interface BookItemProps {
   title: string
   description: string
-  image: string
   id: string
+  bookId: string
 }
 
-const BookItem: React.FunctionComponent<BookItemProps> = ({
+const SongItem: React.FunctionComponent<BookItemProps> = ({
   title,
   description,
-  image,
   id,
+  bookId,
 }) => (
-  <ListItemLink button to={`/${id}`}>
-    <ListItemAvatar>
-      <Avatar src={image} />
-    </ListItemAvatar>
+  <ListItemLink button to={`/${bookId}/${id}`}>
     <ListItemText primary={title} secondary={description} />
   </ListItemLink>
 )
 
-export default BookItem
+export default SongItem

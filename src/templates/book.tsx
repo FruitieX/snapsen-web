@@ -2,6 +2,7 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import { Book } from "../types/book"
 import Layout from "../components/Layout"
+import BookDetails from "../components/BookDetails"
 
 interface BookProps {
   data: {
@@ -9,11 +10,15 @@ interface BookProps {
   }
 }
 
-const BookTemplate: React.FunctionComponent<BookProps> = props => (
-  <Layout>
-    <div>{JSON.stringify(props.data)}</div>
-  </Layout>
-)
+const BookTemplate: React.FunctionComponent<BookProps> = props => {
+  const book = props.data.booksJson
+
+  return (
+    <Layout>
+      <BookDetails {...book} />
+    </Layout>
+  )
+}
 
 export default BookTemplate
 
