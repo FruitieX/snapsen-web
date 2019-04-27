@@ -3,7 +3,7 @@ import { List, Card, ListSubheader } from "@material-ui/core"
 import { Song } from "../types/song"
 import SongListItem from "./SongListItem"
 
-import { FixedSizeList } from "react-window"
+import { FixedSizeList, areEqual } from "react-window"
 import { WindowScroller } from "react-virtualized"
 
 interface SongListProps {
@@ -65,13 +65,16 @@ const SongList: React.FunctionComponent<SongListProps> = ({
           overscanCount={10}
           style={{ height: "100%" }}
         >
-          {({ style, index }) => (
-            <SongListItem
-              song={songs[index]}
-              bookId={bookId}
-              bookTitle={bookTitle}
-              style={style}
-            />
+          {React.memo(
+            ({ style, index }) => (
+              <SongListItem
+                song={songs[index]}
+                bookId={bookId}
+                bookTitle={bookTitle}
+                style={style}
+              />
+            ),
+            areEqual
           )}
         </FixedSizeList>
       </List>
