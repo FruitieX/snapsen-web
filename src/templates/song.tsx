@@ -18,7 +18,6 @@ interface SongTemplateProps {
 const SongTemplate: React.FunctionComponent<SongTemplateProps> = props => {
   const book = props.data.booksJson
   const song = book.songs.find(song => song.id === props.pageContext.songId)
-  console.log(props)
 
   return song ? (
     <Layout>

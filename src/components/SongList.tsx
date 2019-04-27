@@ -13,6 +13,7 @@ interface SongListProps {
 }
 
 const songListItemHeight = 60
+const ssrWindowHeight = 2160 // assume 4K :-)
 
 const SongList: React.FunctionComponent<SongListProps> = ({
   songs,
@@ -36,9 +37,12 @@ const SongList: React.FunctionComponent<SongListProps> = ({
       <List subheader={<ListSubheader>Songs</ListSubheader>} component="nav">
         <WindowScroller onScroll={handleScroll}>{() => <div />}</WindowScroller>
         <FixedSizeList
-          ref={listRef}
-          height={window.innerHeight}
+          // don't break server-side rendering
+          height={
+            typeof window === "undefined" ? ssrWindowHeight : window.innerHeight
+          }
           width="100%"
+          ref={listRef}
           itemCount={songs.length}
           itemSize={songListItemHeight}
           style={{ height: "100%" }}
