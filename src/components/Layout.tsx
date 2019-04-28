@@ -22,6 +22,7 @@ import Helmet from "react-helmet"
 
 import "typeface-roboto"
 import Drawer from "./Drawer"
+import UpdateNotification from "./UpdateNotification"
 
 const theme = createMuiTheme({
   palette: {
@@ -63,6 +64,7 @@ const Layout: React.FunctionComponent<LayoutProps> = ({
     <div className={classes.content}>
       <main>{children}</main>
     </div>
+    <UpdateNotification />
   </MuiThemeProvider>
 )
 

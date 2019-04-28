@@ -1,5 +1,8 @@
 const React = require("react")
 const Layout = require("./src/components/Layout").default
+const {
+  updateNotificationState,
+} = require("./src/components/UpdateNotification")
 
 /**
  * Implement Gatsby's Browser APIs in this file.
@@ -8,3 +11,7 @@ const Layout = require("./src/components/Layout").default
  */
 
 exports.wrapPageElement = ({ element }) => <Layout>{element}</Layout>
+
+exports.onServiceWorkerUpdateFound = () => {
+  updateNotificationState.show()
+}

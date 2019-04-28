@@ -1,5 +1,3 @@
-const React = require("react")
-const Layout = require("./src/components/Layout").default
 const path = require("path")
 
 /**
@@ -7,8 +5,6 @@ const path = require("path")
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
-
-exports.wrapPageElement = ({ element }) => <Layout>{element}</Layout>
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
