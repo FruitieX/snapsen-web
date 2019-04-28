@@ -34,6 +34,7 @@ module.exports = {
         theme_color: `#795548`,
         display: `minimal-ui`,
         icon: `src/images/snapsen-icon.png`, // This path is relative to the root of the site.
+        display: `standalone`,
       },
     },
     // 'gatsby-plugin-styled-components',
