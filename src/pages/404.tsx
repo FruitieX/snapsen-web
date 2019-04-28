@@ -1,5 +1,5 @@
 import * as React from "react"
-import SEO from "../components/SEO"
+import SEO from "../components/Layout/SEO"
 
 const NotFoundPage: React.FunctionComponent = () => (
   <>

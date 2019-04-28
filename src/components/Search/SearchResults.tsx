@@ -8,14 +8,14 @@ import {
   WithStyles,
   withStyles,
 } from "@material-ui/core"
-import { Song } from "../types/song"
+import { Song } from "../../types/song"
 
-import SongList from "./SongList"
-import { searchFieldState } from "./SearchField"
+import SongList from "../Song/SongList"
+import { searchFieldState } from "../Layout/SearchField"
 import { useStaticQuery, graphql } from "gatsby"
-import { BookListData } from "./BookList"
+import { BookListData } from "../Book/BookList"
 import { observer } from "mobx-react-lite"
-import { Book } from "../types/book"
+import { Book } from "../../types/book"
 
 /**
  * Song filtering logic

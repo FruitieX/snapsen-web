@@ -1,6 +1,6 @@
 import * as React from "react"
 import { List, ListSubheader } from "@material-ui/core"
-import { Song } from "../types/song"
+import { Song } from "../../types/song"
 import SongListItem from "./SongListItem"
 
 import { FixedSizeList, areEqual } from "react-window"

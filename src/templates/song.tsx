@@ -1,7 +1,7 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import { Book } from "../types/book"
-import SongDetails from "../components/SongDetails"
+import SongDetails from "../components/Song/SongDetails"
 import NotFoundPage from "../pages/404"
 
 interface SongTemplateProps {

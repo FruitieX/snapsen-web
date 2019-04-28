@@ -1,8 +1,8 @@
 const React = require("react")
-const Layout = require("./src/components/Layout").default
+const Layout = require("./src/components/Layout/Layout").default
 const {
   updateNotificationState,
-} = require("./src/components/UpdateNotification")
+} = require("./src/components/Layout/UpdateNotification")
 
 /**
  * Implement Gatsby's Browser APIs in this file.

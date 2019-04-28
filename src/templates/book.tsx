@@ -1,8 +1,8 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import { Book } from "../types/book"
-import BookDetails from "../components/BookDetails"
-import SearchResults from "../components/SearchResults"
+import BookDetails from "../components/Book/BookDetails"
+import SearchResults from "../components/Search/SearchResults"
 
 interface BookTemplateProps {
   data: {

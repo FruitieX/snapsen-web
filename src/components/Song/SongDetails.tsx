@@ -20,10 +20,10 @@ import BookIcon from "@material-ui/icons/LibraryBooks"
 import PageIcon from "@material-ui/icons/Book"
 import TypeIcon from "@material-ui/icons/FilterList"
 import DescriptionIcon from "@material-ui/icons/Notes"
-import { ButtonLink } from "./GatsbyLinkWrappers"
-import { Song } from "../types/song"
-import generateSongDescription from "../utils/generateSongDescription"
-import SEO from "./SEO"
+import { ButtonLink } from "../../utils/GatsbyLinkWrappers"
+import { Song } from "../../types/song"
+import generateSongDescription from "../../utils/generateSongDescription"
+import SEO from "../Layout/SEO"
 
 const styles = (theme: Theme) =>
   createStyles({

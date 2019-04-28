@@ -9,11 +9,11 @@ import {
   WithStyles,
 } from "@material-ui/core"
 import BackIcon from "@material-ui/icons/ArrowBack"
-import { ButtonLink } from "./GatsbyLinkWrappers"
-import { Book } from "../types/book"
-import SongList from "./SongList"
+import { ButtonLink } from "../../utils/GatsbyLinkWrappers"
+import { Book } from "../../types/book"
+import SongList from "../Song/SongList"
 import { observer } from "mobx-react-lite"
-import SEO from "./SEO"
+import SEO from "../Layout/SEO"
 
 const styles = (theme: Theme) =>
   createStyles({

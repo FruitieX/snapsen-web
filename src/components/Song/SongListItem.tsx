@@ -1,8 +1,8 @@
 import * as React from "react"
 import { ListItemText } from "@material-ui/core"
-import { ListItemLink } from "./GatsbyLinkWrappers"
-import { Song } from "../types/song"
-import generateSongDescription from "../utils/generateSongDescription"
+import { ListItemLink } from "../../utils/GatsbyLinkWrappers"
+import { Song } from "../../types/song"
+import generateSongDescription from "../../utils/generateSongDescription"
 
 interface SongListItemProps {
   bookId: string

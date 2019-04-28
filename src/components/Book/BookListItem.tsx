@@ -1,6 +1,6 @@
 import * as React from "react"
 import { ListItemText, ListItemAvatar, Avatar } from "@material-ui/core"
-import { ListItemLink } from "./GatsbyLinkWrappers"
+import { ListItemLink } from "../../utils/GatsbyLinkWrappers"
 
 interface BookListItemProps {
   title: string

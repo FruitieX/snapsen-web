@@ -1,5 +1,5 @@
 const React = require("react")
-const Layout = require("./src/components/Layout").default
+const Layout = require("./src/components/Layout/Layout").default
 
 /**
  * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.

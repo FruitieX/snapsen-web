@@ -11,11 +11,11 @@ import {
   CardHeader,
   Avatar,
 } from "@material-ui/core"
-import { version } from "../../package.json"
+import { version } from "../../../package.json"
 import { observable, action } from "mobx"
 import { observer } from "mobx-react-lite"
-import { ListItemLink } from "./GatsbyLinkWrappers"
-import Logo from "../images/snapsen-icon.png"
+import { ListItemLink } from "../../utils/GatsbyLinkWrappers"
+import Logo from "../../images/snapsen-icon.png"
 
 const iOS =
   (process as any).browser && /iPad|iPhone|iPod/.test(navigator.userAgent)

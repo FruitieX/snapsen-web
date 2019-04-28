@@ -1,6 +1,6 @@
 import * as React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import { Book } from "../types/book"
+import { Book } from "../../types/book"
 import BookListItem from "./BookListItem"
 import { Card, List, ListSubheader } from "@material-ui/core"
 
