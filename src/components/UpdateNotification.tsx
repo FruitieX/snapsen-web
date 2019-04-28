@@ -55,25 +55,23 @@ export const UpdateNotification: React.FunctionComponent<
       horizontal: "center",
     }}
     open={updateNotificationState.updateAvailable}
-    onClose={updateNotificationState.hide}
   >
     <SnackbarContent
       aria-describedby={"message-id"}
       className={classes.info}
       message={
         <span id="message-id" className={classes.message}>
-          <InfoIcon className={classes.infoIcon} /> An update is available to
-          Snapsen
+          <InfoIcon className={classes.infoIcon} /> Update available
         </span>
       }
       action={[
         <Button
-          key="reload"
+          key="update"
           color="inherit"
           size="small"
           onClick={handleDoUpdate}
         >
-          Reload
+          Update now
         </Button>,
         <IconButton
           key="close"
