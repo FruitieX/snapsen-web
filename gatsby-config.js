@@ -30,7 +30,7 @@ module.exports = {
         name: `Snapsen`,
         short_name: `Snapsen`,
         start_url: `/`,
-        background_color: `#795548`,
+        background_color: `#ac6a4a`,
         theme_color: `#795548`,
         display: `minimal-ui`,
         icon: `src/images/snapsen-icon.png`, // This path is relative to the root of the site.
