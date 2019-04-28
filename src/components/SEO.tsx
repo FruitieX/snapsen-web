@@ -46,7 +46,6 @@ const SEO: React.FunctionComponent<SEOProps> = ({
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
           name: `description`,

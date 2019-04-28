@@ -13,6 +13,7 @@ import { ButtonLink } from "./GatsbyLinkWrappers"
 import { Book } from "../types/book"
 import SongList from "./SongList"
 import { observer } from "mobx-react-lite"
+import SEO from "./SEO"
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -34,6 +35,10 @@ interface BookItemProps extends WithStyles<typeof styles> {
 const BookDetails: React.FunctionComponent<BookItemProps> = observer(
   ({ classes, book: { title, id, image, description, songs } }) => (
     <>
+      <SEO
+        title={`Snapsen | ${title}`}
+        keywords={[title, `snapsvisa`, `sångbok`]}
+      />
       <Card className={classes.bookCard}>
         <ButtonLink
           color="primary"

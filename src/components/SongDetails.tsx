@@ -23,6 +23,7 @@ import DescriptionIcon from "@material-ui/icons/Notes"
 import { ButtonLink } from "./GatsbyLinkWrappers"
 import { Song } from "../types/song"
 import generateSongDescription from "../utils/generateSongDescription"
+import SEO from "./SEO"
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -56,6 +57,10 @@ const SongDetails: React.FunctionComponent<SongDetailsProps> = ({
   classes,
 }) => (
   <>
+    <SEO
+      title={`Snapsen | ${title}`}
+      keywords={[title, `snapsvisa`, `sångbok`]}
+    />
     <Card className={classes.lyricsCard}>
       <ButtonLink
         color="primary"

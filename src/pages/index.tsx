@@ -5,7 +5,10 @@ import Search from "../components/Search"
 
 const IndexPage: React.FunctionComponent = () => (
   <>
-    <SEO title="Snapsen" keywords={[`snapsen`, ``, `react`]} />
+    <SEO
+      title="Snapsen"
+      keywords={[`snapsen`, `snapsvisa`, `snapsvisor`, `sångbok`]}
+    />
     <Search>
       <BookList />
     </Search>
