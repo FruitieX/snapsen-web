@@ -1,36 +1,34 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import { Book } from "../types/book"
-import Layout from "../components/Layout"
 import SongDetails from "../components/SongDetails"
 import NotFoundPage from "../pages/404"
 
 interface SongTemplateProps {
-  data: {
-    booksJson: Book
-  }
-
   pageContext: {
     songId: string
   }
+
+  data: {
+    booksJson: Book
+  }
 }
 
-const SongTemplate: React.FunctionComponent<SongTemplateProps> = props => {
-  const book = props.data.booksJson
-  const song = book.songs.find(song => song.id === props.pageContext.songId)
+const SongTemplate: React.FunctionComponent<SongTemplateProps> = ({
+  pageContext: { songId },
+  data: { booksJson: book },
+}) => {
+  const song = book.songs.find(song => song.id === songId)
 
   return song ? (
-    <Layout>
-      <SongDetails bookId={book.id} bookTitle={book.title} {...song} />
-    </Layout>
+    <SongDetails bookId={book.id} bookTitle={book.title} {...song} />
   ) : (
     <NotFoundPage />
   )
 }
 
-export default SongTemplate
-
-export const pageQuery = graphql`
+// TODO: find a better way to query a single song?
+export const songPageQuery = graphql`
   query($bookId: String!) {
     booksJson(id: { eq: $bookId }) {
       title
@@ -49,3 +47,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export default SongTemplate

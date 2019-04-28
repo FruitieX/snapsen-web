@@ -1,8 +1,8 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import { Book } from "../types/book"
-import Layout from "../components/Layout"
 import BookDetails from "../components/BookDetails"
+import Search from "../components/Search"
 
 interface BookTemplateProps {
   data: {
@@ -10,19 +10,17 @@ interface BookTemplateProps {
   }
 }
 
-const BookTemplate: React.FunctionComponent<BookTemplateProps> = props => {
-  const book = props.data.booksJson
-
+const BookTemplate: React.FunctionComponent<BookTemplateProps> = ({
+  data: { booksJson: book },
+}) => {
   return (
-    <Layout>
-      <BookDetails {...book} />
-    </Layout>
+    <Search>
+      <BookDetails book={book} />
+    </Search>
   )
 }
 
-export default BookTemplate
-
-export const pageQuery = graphql`
+export const bookPageQuery = graphql`
   query($bookId: String!) {
     booksJson(id: { eq: $bookId }) {
       title
@@ -46,3 +44,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export default BookTemplate

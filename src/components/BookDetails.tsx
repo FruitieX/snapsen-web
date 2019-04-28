@@ -12,7 +12,6 @@ import BackIcon from "@material-ui/icons/ArrowBack"
 import { ButtonLink } from "./GatsbyLinkWrappers"
 import { Book } from "../types/book"
 import SongList from "./SongList"
-import { searchStore } from "./Header"
 import { observer } from "mobx-react-lite"
 
 const styles = (theme: Theme) =>
@@ -28,10 +27,12 @@ const styles = (theme: Theme) =>
     },
   })
 
-interface BookItemProps extends Book, WithStyles<typeof styles> {}
+interface BookItemProps extends WithStyles<typeof styles> {
+  book: Book
+}
 
 const BookDetails: React.FunctionComponent<BookItemProps> = observer(
-  ({ title, description, image, id, songs, classes }) => (
+  ({ classes, book: { title, id, image, description, songs } }) => (
     <>
       <Card className={classes.bookCard}>
         <ButtonLink
@@ -44,17 +45,12 @@ const BookDetails: React.FunctionComponent<BookItemProps> = observer(
           Back
         </ButtonLink>
         <CardHeader
-          avatar={<Avatar aria-label="Songbook info" src={image} />}
+          avatar={<Avatar aria-label="Songbook image" src={image} />}
           title={title}
           subheader={description}
         />
+        <SongList songs={songs} bookId={id} bookTitle={title} />
       </Card>
-      <SongList
-        songs={songs}
-        bookId={id}
-        bookTitle={title}
-        filter={searchStore.value}
-      />
     </>
   )
 )

@@ -1,24 +1,15 @@
 import * as React from "react"
-import {
-  List,
-  Card,
-  ListSubheader,
-  Typography,
-  CardContent,
-  Button,
-} from "@material-ui/core"
+import { List, ListSubheader } from "@material-ui/core"
 import { Song } from "../types/song"
 import SongListItem from "./SongListItem"
 
 import { FixedSizeList, areEqual } from "react-window"
 import { WindowScroller } from "react-virtualized"
-import { searchStore } from "./Header"
 
 interface SongListProps {
   songs: Song[]
   bookId: string
   bookTitle: string
-  filter: string
 }
 
 const songListItemHeight = 60 // react-window wants this upfront, measured through browser dev tools
@@ -28,7 +19,6 @@ const SongList: React.FunctionComponent<SongListProps> = ({
   songs,
   bookId,
   bookTitle,
-  filter,
 }) => {
   const [height, setHeight] = React.useState(
     // don't break server-side rendering
@@ -60,57 +50,33 @@ const SongList: React.FunctionComponent<SongListProps> = ({
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
-  const handleClearFilter = React.useCallback(() => (searchStore.value = ""), [
-    searchStore,
-  ])
-
-  const filterRegex = new RegExp(filter, "i")
-
-  const filteredSongs = songs.filter(song => filterRegex.test(song.title))
-
   // Beware of hacks below, to get WindowScroller working with react-window:
   // https://github.com/bvaughn/react-window/issues/30#issuecomment-428868071
   return (
-    <Card>
-      {filter !== "" && (
-        <CardContent>
-          <Typography variant="h5">
-            Note: showing only results matching filter.
-          </Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleClearFilter}
-          >
-            Clear filter
-          </Button>
-        </CardContent>
-      )}
-      <List subheader={<ListSubheader>Songs</ListSubheader>} component="nav">
-        <WindowScroller onScroll={handleScroll}>{() => <div />}</WindowScroller>
-        <FixedSizeList
-          height={height}
-          width="100%"
-          ref={listRef}
-          itemCount={filteredSongs.length}
-          itemSize={songListItemHeight}
-          overscanCount={10}
-          style={{ height: "100%" }}
-        >
-          {React.memo(
-            ({ style, index }) => (
-              <SongListItem
-                song={filteredSongs[index]}
-                bookId={bookId}
-                bookTitle={bookTitle}
-                style={style}
-              />
-            ),
-            areEqual
-          )}
-        </FixedSizeList>
-      </List>
-    </Card>
+    <List subheader={<ListSubheader>Songs</ListSubheader>} component="nav">
+      <WindowScroller onScroll={handleScroll}>{() => <div />}</WindowScroller>
+      <FixedSizeList
+        height={height}
+        width="100%"
+        ref={listRef}
+        itemCount={songs.length}
+        itemSize={songListItemHeight}
+        overscanCount={10}
+        style={{ height: "100%" }}
+      >
+        {React.memo(
+          ({ style, index }) => (
+            <SongListItem
+              song={songs[index]}
+              bookId={bookId}
+              bookTitle={bookTitle}
+              style={style}
+            />
+          ),
+          areEqual
+        )}
+      </FixedSizeList>
+    </List>
   )
 }
 

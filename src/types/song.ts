@@ -2,7 +2,7 @@ export interface Song {
   title: string
   id: string
   description: string
-  page: string
+  page: number
   pre: string
   lyrics: string
   melody: string

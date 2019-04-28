@@ -4,22 +4,28 @@ import {
   Toolbar,
   IconButton,
   Typography,
-  InputBase,
   withStyles,
   createStyles,
   Theme,
   WithStyles,
 } from "@material-ui/core"
-import { fade } from "@material-ui/core/styles/colorManipulator"
 import MenuIcon from "@material-ui/icons/Menu"
-import SearchIcon from "@material-ui/icons/Search"
-import { observable } from "mobx"
-import { observer } from "mobx-react-lite"
+import { drawerState } from "./Drawer"
+import SearchField from "./SearchField"
+import { graphql, useStaticQuery } from "gatsby"
 
 const styles = (theme: Theme) =>
   createStyles({
     root: {
       width: "100%",
+    },
+    appBar: {
+      zIndex: theme.zIndex.drawer + 1,
+    },
+    content: {
+      margin: "0 auto",
+      maxWidth: 960,
+      padding: "0px 1.0875rem 1.45rem",
     },
     grow: {
       flexGrow: 1,
@@ -34,117 +40,64 @@ const styles = (theme: Theme) =>
         display: "block",
       },
     },
-    search: {
-      position: "relative",
-      borderRadius: theme.shape.borderRadius,
-      backgroundColor: fade(theme.palette.common.white, 0.15),
-      "&:hover": {
-        backgroundColor: fade(theme.palette.common.white, 0.25),
-      },
-      marginLeft: 0,
-      width: "100%",
-      [theme.breakpoints.up("sm")]: {
-        marginLeft: theme.spacing.unit,
-        width: "auto",
-      },
-    },
-    searchIcon: {
-      width: theme.spacing.unit * 9,
-      height: "100%",
-      position: "absolute",
-      pointerEvents: "none",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    inputRoot: {
-      color: "inherit",
-      width: "100%",
-    },
-    inputInput: {
-      paddingTop: theme.spacing.unit,
-      paddingRight: theme.spacing.unit,
-      paddingBottom: theme.spacing.unit,
-      paddingLeft: theme.spacing.unit * 10,
-      transition: theme.transitions.create("width"),
-      width: "100%",
-      [theme.breakpoints.up("sm")]: {
-        width: 120,
-        "&:focus": {
-          width: 200,
-        },
-      },
-    },
   })
 
-class SearchState {
-  @observable value = ""
-}
+interface HeaderProps extends WithStyles<typeof styles> {}
 
-export const searchStore = new SearchState()
-
-interface HeaderProps extends WithStyles<typeof styles> {
-  siteTitle?: string
-}
-
-const Header: React.FunctionComponent<HeaderProps> = observer(
-  ({ siteTitle = ``, classes, children }) => {
-    const handleChange = React.useCallback(
-      (event: React.ChangeEvent<HTMLInputElement>) => {
-        searchStore.value = event.currentTarget.value
-      },
-      [searchStore]
-    )
-
-    return (
-      <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="Open drawer"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography
-              className={classes.title}
-              variant="h6"
-              color="inherit"
-              noWrap
-            >
-              {siteTitle}
-            </Typography>
-            <div className={classes.grow} />
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                value={searchStore.value}
-                onChange={handleChange}
-              />
-            </div>
-          </Toolbar>
-        </AppBar>
-        <div
-          style={{
-            margin: "0 auto",
-            maxWidth: 960,
-            padding: "0px 1.0875rem 1.45rem",
-            paddingTop: 0,
-          }}
-        >
-          {children}
-        </div>
-      </div>
-    )
+interface SiteTitleData {
+  site: {
+    siteMetadata: {
+      title: string
+    }
   }
-)
+}
+
+const Header: React.FunctionComponent<HeaderProps> = ({
+  classes,
+  children,
+}) => {
+  const {
+    site: {
+      siteMetadata: { title },
+    },
+  }: SiteTitleData = useStaticQuery(
+    graphql`
+      query HeaderQuery {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `
+  )
+
+  return (
+    <div className={classes.root}>
+      <AppBar position="fixed" className={classes.appBar}>
+        <Toolbar>
+          <IconButton
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="Open drawer"
+            onClick={drawerState.open}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography
+            className={classes.title}
+            variant="h6"
+            color="inherit"
+            noWrap
+          >
+            {title}
+          </Typography>
+          <SearchField />
+        </Toolbar>
+      </AppBar>
+      <div className={classes.content}>{children}</div>
+    </div>
+  )
+}
 
 export default withStyles(styles)(Header)
