@@ -13,6 +13,7 @@ import MenuIcon from "@material-ui/icons/Menu"
 import { drawerState } from "./Drawer"
 import SearchField from "./SearchField"
 
+// Mostly from: https://material-ui.com/demos/app-bar/#app-bar-with-a-primary-search-field
 const styles = (theme: Theme) =>
   createStyles({
     root: {

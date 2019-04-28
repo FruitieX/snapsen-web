@@ -17,6 +17,7 @@ import CrossIcon from "@material-ui/icons/Close"
 
 const songDetailsRegex = new RegExp("/.+/.+")
 
+// Stores current search field value, with actions for setting / clearing the value
 class SearchFieldState {
   @observable value?: string
 
@@ -48,6 +49,7 @@ class SearchFieldState {
 
 export const searchFieldState = new SearchFieldState()
 
+// Mostly from: https://material-ui.com/demos/app-bar/#app-bar-with-a-primary-search-field
 const styles = (theme: Theme) =>
   createStyles({
     search: {
@@ -88,6 +90,7 @@ interface SearchFieldProps extends WithStyles<typeof styles> {}
 
 const SearchField: React.FunctionComponent<SearchFieldProps> = observer(
   ({ classes }) => {
+    // Unwraps value from a ChangeEvent
     const handleChange = React.useCallback(
       (event: React.ChangeEvent<HTMLInputElement>) => {
         searchFieldState.setValue(event.currentTarget.value)
@@ -95,8 +98,8 @@ const SearchField: React.FunctionComponent<SearchFieldProps> = observer(
       [searchFieldState]
     )
 
+    // Exits search mode if search field is empty when it's being unfocused
     const handleBlur = React.useCallback(() => {
-      // If search field is empty when unfocused, exit search
       if (searchFieldState.value === "") searchFieldState.closeSearch()
     }, [searchFieldState])
 

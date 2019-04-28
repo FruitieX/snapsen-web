@@ -15,7 +15,9 @@ import CloseIcon from "@material-ui/icons/Close"
 import InfoIcon from "@material-ui/icons/Info"
 import { blue } from "@material-ui/core/colors"
 
+// Stores whether an update is available or not, and actions for showing/hiding notification.
 class UpdateNotificationState {
+  // Toggled from /gatsby-browser.js when service worker updates have been found
   @observable updateAvailable = false
 
   @action
@@ -27,6 +29,7 @@ class UpdateNotificationState {
 
 export const updateNotificationState = new UpdateNotificationState()
 
+// A page reload will activate the downloaded update
 const handleDoUpdate = () => window.location.reload()
 
 const styles = (theme: Theme) =>

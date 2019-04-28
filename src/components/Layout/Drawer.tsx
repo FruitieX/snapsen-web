@@ -20,6 +20,7 @@ import Logo from "../../images/snapsen-icon.png"
 const iOS =
   (process as any).browser && /iPad|iPhone|iPod/.test(navigator.userAgent)
 
+// Stores whether drawer is opened or not, and actions for opening/closing
 class DrawerState {
   @observable opened = false
 
@@ -32,15 +33,15 @@ class DrawerState {
 
 export const drawerState = new DrawerState()
 
-const drawerWidth = 240
-
 const styles = (theme: Theme) =>
   createStyles({
-    root: {
-      paddingTop: 64,
-    },
+    // TODO: try pushing the drawer modal down by the height of the Header so it
+    // doesn't get covered
+    // root: {
+    //   paddingTop: 64,
+    // },
     drawer: {
-      width: drawerWidth,
+      width: 240,
     },
     toolbar: theme.mixins.toolbar,
   })
@@ -54,7 +55,7 @@ const Drawer: React.FunctionComponent<DrawerProps> = observer(({ classes }) => (
     onOpen={drawerState.open}
     onClose={drawerState.close}
     classes={{
-      modal: classes.root,
+      // modal: classes.root,
       paper: classes.drawer,
     }}
   >

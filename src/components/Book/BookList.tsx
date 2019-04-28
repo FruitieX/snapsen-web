@@ -17,6 +17,7 @@ export interface BookListData {
 }
 
 const BookList: React.FunctionComponent = () => {
+  // Fetch all books for listing
   const {
     allBooksJson: { edges: books },
   }: BookListData = useStaticQuery(

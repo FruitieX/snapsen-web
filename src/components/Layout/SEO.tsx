@@ -17,6 +17,9 @@ interface SEOProps {
   title: string
 }
 
+/**
+ * Helper component for page metadata
+ */
 const SEO: React.FunctionComponent<SEOProps> = ({
   description = ``,
   lang = `en`,

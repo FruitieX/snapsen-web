@@ -7,7 +7,6 @@
 
 import * as React from "react"
 
-import Header from "./Header"
 import {
   MuiThemeProvider,
   createMuiTheme,
@@ -21,7 +20,9 @@ import { brown } from "@material-ui/core/colors"
 import Helmet from "react-helmet"
 
 import "typeface-roboto"
+
 import Drawer from "./Drawer"
+import Header from "./Header"
 import UpdateNotification from "./UpdateNotification"
 
 const theme = createMuiTheme({
@@ -35,7 +36,7 @@ const theme = createMuiTheme({
 
 const styles = (theme: Theme) =>
   createStyles({
-    toolbar: theme.mixins.toolbar,
+    toolbar: theme.mixins.toolbar, // pushes down content by height of Header
     content: {
       margin: `0 auto`,
       maxWidth: 960,
