@@ -12,7 +12,6 @@ import {
 import MenuIcon from "@material-ui/icons/Menu"
 import { drawerState } from "./Drawer"
 import SearchField from "./SearchField"
-import { graphql, useStaticQuery } from "gatsby"
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -44,60 +43,34 @@ const styles = (theme: Theme) =>
 
 interface HeaderProps extends WithStyles<typeof styles> {}
 
-interface SiteTitleData {
-  site: {
-    siteMetadata: {
-      title: string
-    }
-  }
-}
-
 const Header: React.FunctionComponent<HeaderProps> = ({
   classes,
   children,
-}) => {
-  const {
-    site: {
-      siteMetadata: { title },
-    },
-  }: SiteTitleData = useStaticQuery(
-    graphql`
-      query HeaderQuery {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `
-  )
-
-  return (
-    <div className={classes.root}>
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <IconButton
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="Open drawer"
-            onClick={drawerState.open}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            className={classes.title}
-            variant="h6"
-            color="inherit"
-            noWrap
-          >
-            {title}
-          </Typography>
-          <SearchField />
-        </Toolbar>
-      </AppBar>
-      <div className={classes.content}>{children}</div>
-    </div>
-  )
-}
+}) => (
+  <div className={classes.root}>
+    <AppBar position="fixed" className={classes.appBar}>
+      <Toolbar>
+        <IconButton
+          className={classes.menuButton}
+          color="inherit"
+          aria-label="Open drawer"
+          onClick={drawerState.open}
+        >
+          <MenuIcon />
+        </IconButton>
+        <Typography
+          className={classes.title}
+          variant="h6"
+          color="inherit"
+          noWrap
+        >
+          {"Snapsen"}
+        </Typography>
+        <SearchField />
+      </Toolbar>
+    </AppBar>
+    <div className={classes.content}>{children}</div>
+  </div>
+)
 
 export default withStyles(styles)(Header)
