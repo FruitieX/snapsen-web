@@ -57,6 +57,11 @@ const Layout: React.FunctionComponent<LayoutProps> = ({
       meta={[
         { name: "description", content: "A digital songbook web-app" },
         { name: "keywords", content: "songbook, snapsen" },
+        {
+          name: "viewport",
+          content:
+            "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
+        },
       ]}
     />
     <Drawer />
