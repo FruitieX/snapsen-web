@@ -14,6 +14,7 @@ import {
 import { fade } from "@material-ui/core/styles/colorManipulator"
 import SearchIcon from "@material-ui/icons/Search"
 import CrossIcon from "@material-ui/icons/Close"
+import { iOS } from "../../utils/iOS"
 
 const songDetailsRegex = new RegExp("/.+/.+")
 
@@ -39,6 +40,16 @@ class SearchFieldState {
       // If we're on song details page when search field activates, navigate to root
       if (songDetailsRegex.test(window.location.pathname)) {
         navigate("/")
+      }
+
+      // HACK: wtf iOS Safari
+      // https://blog.opendigerati.com/the-eccentric-ways-of-ios-safari-with-the-keyboard-b5aa3f34228d
+      //
+      // Scroll to top of page when activating search if device is iOS, else the
+      // user will see a blank page if they have scrolled the page before
+      // activating search
+      if (iOS) {
+        window.scrollTo({ top: 0 })
       }
     }
   }

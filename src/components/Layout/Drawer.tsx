@@ -16,9 +16,7 @@ import { observable, action } from "mobx"
 import { observer } from "mobx-react-lite"
 import { ListItemLink } from "../../utils/GatsbyLinkWrappers"
 import Logo from "../../images/snapsen-icon.png"
-
-const iOS =
-  (process as any).browser && /iPad|iPhone|iPod/.test(navigator.userAgent)
+import { iOS } from "../../utils/iOS"
 
 // Stores whether drawer is opened or not, and actions for opening/closing
 class DrawerState {
