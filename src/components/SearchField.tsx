@@ -51,9 +51,11 @@ export const searchFieldState = new SearchFieldState()
 const styles = (theme: Theme) =>
   createStyles({
     search: {
+      display: "flex",
       position: "relative",
       borderRadius: theme.shape.borderRadius,
       backgroundColor: fade(theme.palette.common.white, 0.15),
+      overflow: "hidden",
       "&:hover": {
         backgroundColor: fade(theme.palette.common.white, 0.25),
       },
@@ -68,7 +70,6 @@ const styles = (theme: Theme) =>
       width: theme.spacing.unit * 6,
     },
     inputRoot: {
-      overflow: "hidden",
       color: "inherit",
       width: "100%",
     },
