@@ -48,7 +48,6 @@ const SongDetails: React.FunctionComponent<SongDetailsProps> = ({
   bookTitle,
   bookId,
   description,
-  id,
   pre,
   lyrics,
   melody,

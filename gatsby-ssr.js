@@ -7,4 +7,5 @@ const Layout = require("./src/components/Layout").default
  * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
 
+// Wrap all pages with the Layout component - persistent across navigations
 exports.wrapPageElement = ({ element }) => <Layout>{element}</Layout>

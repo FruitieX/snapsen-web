@@ -33,6 +33,7 @@ exports.createPages = ({ graphql, actions }) => {
     result.data.allBooksJson.edges.forEach((edge, bookIndex) => {
       const book = edge.node
 
+      // Create a book details page for each book
       createPage({
         path: `/${book.id}`,
         component: bookTemplate,
@@ -42,6 +43,7 @@ exports.createPages = ({ graphql, actions }) => {
         },
       })
 
+      // Create a song details page for each song
       book.songs.forEach((song, songIndex) => {
         createPage({
           path: `/${book.id}/${song.id}`,

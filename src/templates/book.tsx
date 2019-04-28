@@ -2,7 +2,7 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import { Book } from "../types/book"
 import BookDetails from "../components/BookDetails"
-import Search from "../components/Search"
+import SearchResults from "../components/SearchResults"
 
 interface BookTemplateProps {
   data: {
@@ -10,13 +10,16 @@ interface BookTemplateProps {
   }
 }
 
+/**
+ * Template used by each book details page
+ */
 const BookTemplate: React.FunctionComponent<BookTemplateProps> = ({
   data: { booksJson: book },
 }) => {
   return (
-    <Search>
+    <SearchResults>
       <BookDetails book={book} />
-    </Search>
+    </SearchResults>
   )
 }
 

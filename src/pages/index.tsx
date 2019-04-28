@@ -1,7 +1,7 @@
 import * as React from "react"
 import SEO from "../components/SEO"
 import BookList from "../components/BookList"
-import Search from "../components/Search"
+import SearchResults from "../components/SearchResults"
 
 const IndexPage: React.FunctionComponent = () => (
   <>
@@ -9,9 +9,9 @@ const IndexPage: React.FunctionComponent = () => (
       title="Snapsen"
       keywords={[`snapsen`, `snapsvisa`, `snapsvisor`, `sångbok`]}
     />
-    <Search>
+    <SearchResults>
       <BookList />
-    </Search>
+    </SearchResults>
   </>
 )
 

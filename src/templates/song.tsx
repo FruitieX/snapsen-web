@@ -14,6 +14,9 @@ interface SongTemplateProps {
   }
 }
 
+/**
+ * Template used by each song details page
+ */
 const SongTemplate: React.FunctionComponent<SongTemplateProps> = ({
   pageContext: { songId },
   data: { booksJson: book },
